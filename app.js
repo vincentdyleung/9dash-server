@@ -43,7 +43,7 @@ app.configure('development', function() {
 });
 
 app.configure('production', function() {
-    mongoose.connect('mongodb://admin:zk7CKAyJPrr5@$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/server');
+    mongoose.connect('mongodb://admin:zk7CKAyJPrr5@' + process.env.OPENSHIFT_MONGODB_DB_HOST + ':' + process.env.OPENSHIFT_MONGODB_DB_PORT + '/server');
 })
 
 /// catch 404 and forwarding to error handler
