@@ -34,6 +34,10 @@ restaurants(resturantModel(mongoose).model, builtUserModel);
 
 //set up routes
 app.get('/', routes.index);
+app.get('/users', users.list);
+app.get('/users/:id', users.find);
+app.post('/users/', users.save);
+
 //app.get('/users', users.list);
 app.get('/restaurants', restaurants.list);
 app.get("/restaurants/id/:id", restaurants.list.search);
