@@ -4,7 +4,7 @@ module.exports = function(model) {
 	Restaurant = model
 }
 
-exports.list = function(req, res) {	
+module.exports.list = function(req, res) {	
 	Restaurant.find()
 		.exec( function(err, docs) {
 			if (err) {
@@ -15,7 +15,7 @@ exports.list = function(req, res) {
 		});
 };
 
-exports.save = function(req, res) {
+module.exports.save = function(req, res) {
 	var restaurant = new Restaurant(req.body);
 	restaurant.save(function(err) {
 		if (err) {
