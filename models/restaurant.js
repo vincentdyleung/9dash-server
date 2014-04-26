@@ -18,5 +18,6 @@ module.exports = function(mongoose) {
 	});
 
 	this.model = mongoose.model(collection, restaurantSchema);
+
 	return this;
 }

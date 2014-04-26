@@ -33,6 +33,7 @@ restaurants(resturantModel(mongoose).model);
 app.get('/', routes.index);
 app.get('/users', users.list);
 app.get('/restaurants', restaurants.list);
+app.get("/restaurants/:id", restaurants.list.search);
 app.post('/restaurants', restaurants.save);
 
 app.configure('development', function() {
