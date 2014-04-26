@@ -34,6 +34,7 @@ app.get('/', routes.index);
 app.get('/users', users.list);
 app.get('/restaurants', restaurants.list);
 app.post('/restaurants', restaurants.save);
+app.post('/restaurant/:id/report', restaurants.submitReport);
 
 app.configure('development', function() {
     mongoose.connect('mongodb://localhost/9dash');
