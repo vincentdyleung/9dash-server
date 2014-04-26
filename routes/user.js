@@ -33,7 +33,7 @@ module.exports.save = function(req, res) {
 	var user = new User(req.body);
 	user.save(function(err) {
 		if (err) {
-			res.json(50, { error: err });
+			res.json(500, { error: err });
 		} else {
 			res.json(200, user);
 		}
