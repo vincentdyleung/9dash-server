@@ -17,8 +17,8 @@ module.exports.list = function(req, res){
 };
 
 module.exports.find = function(req, res) {
-	var fbId = req.params.id;
-	User.find( { fbid: id })
+	var fbId = req.params.fbId;
+	User.find( { fbid: fbId })
 		.exec( function( err, docs ) {
 			if (err) {
 				res.json(500, { error: err });
