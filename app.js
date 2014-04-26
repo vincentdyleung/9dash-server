@@ -28,6 +28,8 @@ app.use(app.router);
 //build models
 var resturantModel = require('./models/restaurant');
 restaurants(resturantModel(mongoose).model);
+var userModel = require('./models/user');
+users(userModel(mongoose).model);
 
 //set up routes
 app.get('/', routes.index);
