@@ -27,16 +27,23 @@ app.use(app.router);
 
 //build models
 var resturantModel = require('./models/restaurant');
-restaurants(resturantModel(mongoose).model);
+var userModel = require('./models/user');
+var builtUserModel = userModel(mongoose).model; 
+users(builtUserModel);
+restaurants(resturantModel(mongoose).model, builtUserModel);
 
 //set up routes
 app.get('/', routes.index);
-app.get('/users', users.list);
+//app.get('/users', users.list);
 app.get('/restaurants', restaurants.list);
 app.get("/restaurants/id/:id", restaurants.list.search);
 app.get("/restaurants/name/:name", restaurants.list.search);
+
+// Post
 app.post('/restaurants', restaurants.save);
-app.post('/restaurant/:id/report', restaurants.submitReport);
+app.post("/restaurants/:id/report", restaurants.submitReport);
+app.post("/restaurants/:id/photo", restaurants.submitPhoto);
+
 
 app.configure('development', function() {
     mongoose.connect('mongodb://localhost/9dash');

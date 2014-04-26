@@ -12,7 +12,7 @@ module.exports = function(mongoose) {
 			user: String
 		}],
 		pictures: [{
-			url: String,
+			content: String,
 			submit_time: Date,
 			user: String
 		}]

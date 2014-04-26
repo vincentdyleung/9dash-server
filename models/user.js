@@ -4,7 +4,8 @@ module.exports = function(mongoose) {
 
 	var userSchema = new Schema({
 		name: String,
-    fbid: String
+    fbid: String,
+    point: Number,
 	});
 	
 	this.model = mongoose.model(collection, userSchema);
