@@ -5,9 +5,11 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var routes = require('./routes');
 var users = require('./routes/user');
+var restaurants = require('./routes/restaurant');
 
 var app = express();
 
@@ -23,8 +25,23 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
+//build models
+var resturantModel = require('./models/restaurant');
+restaurants(resturantModel(mongoose).model);
+
+//set up routes
 app.get('/', routes.index);
 app.get('/users', users.list);
+app.get('/restaurants', restaurants.list);
+app.post('/restaurants', restaurants.save);
+
+app.configure('development', function() {
+    mongoose.connect('mongodb://localhost/9dash');
+});
+
+app.configure('production', function() {
+    mongoose.connect('mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/');
+})
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
