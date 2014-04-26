@@ -43,7 +43,7 @@ app.configure('development', function() {
 });
 
 app.configure('production', function() {
-    mongoose.connect(process.env.MONGOLAB_URI);
+    mongoose.connect(process.env.MONGOHQ_URL);
 });
 
 /// catch 404 and forwarding to error handler
