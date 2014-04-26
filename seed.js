@@ -3,9 +3,9 @@ function seedRes(name,col,num)
   var target = db.getSiblingDB(name).getCollection(col);
   target.drop();
 
-  var first = new Array("Good ", "Happy ", "Yummy ");
-  var food = new Array("Fast food ", "Steak ", "Hotpot ");
-  var name = new Array("House", "Restaurant", "Cafe");
+  var first = new Array("Good ", "Happy ", "Yummy ", "Delicious ", "Authentic ", "Cheap cheap ");
+  var food = new Array("Fast food ", "Steak ", "Hotpot ", "Italian ", "Japanese ", "Thai ", "Spanish ", "French ", "Chinese ");
+  var name = new Array("House ", "Restaurant ", "Cafe ", "Meal ", "Bar ");
 
   for(var i = 0; i < num; i++) 
   {
@@ -32,7 +32,7 @@ function seedRes(name,col,num)
 
     target.insert(
       {
-        name: a+b+c,
+        name: a+b+c+" "+Math.floor(Math.random()*10000),
         reports: report,
       });
 
