@@ -43,7 +43,9 @@ app.configure('development', function() {
 });
 
 app.configure('production', function() {
-    mongoose.connect('mongodb://admin:zk7CKAyJPrr5@' + process.env.OPENSHIFT_MONGODB_DB_HOST + ':' + process.env.OPENSHIFT_MONGODB_DB_PORT + '/server');
+    var connString = 'mongodb://admin:zk7CKAyJPrr5@' + process.env.OPENSHIFT_MONGODB_DB_HOST + ':' + process.env.OPENSHIFT_MONGODB_DB_PORT + '/server'
+    console.log(connString);
+    mongoose.connect(connString);
 })
 
 /// catch 404 and forwarding to error handler

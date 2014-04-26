@@ -5,6 +5,7 @@ module.exports = function(model) {
 }
 
 module.exports.list = function(req, res) {	
+	console.log('in list');
 	Restaurant.find()
 		.exec( function(err, docs) {
 			if (err) {
