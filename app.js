@@ -43,7 +43,7 @@ app.configure('development', function() {
 });
 
 app.configure('production', function() {
-    var connString = 'mongodb://admin:zk7CKAyJPrr5@' + process.env.OPENSHIFT_MONGODB_DB_HOST + ':' + process.env.OPENSHIFT_MONGODB_DB_PORT + '/server';
+    var connString = 'mongodb://admin:zk7CKAyJPrr5@' + process.env.OPENSHIFT_MONGODB_DB_HOST + ':' + process.env.OPENSHIFT_MONGODB_DB_PORT ;
     console.log(connString);
     mongoose.connect(connString);
 });
