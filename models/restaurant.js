@@ -5,15 +5,16 @@ module.exports = function(mongoose) {
 	var restaurantSchema = new Schema({
 		name: String,
 		reports: [{
-			current_ticket_number: Number,
-			last_ticket_number: Number,
-			submit_time: Date,
-			user: Schema.Types.ObjectId
+			waiting_position: Number,
+			waiting_time: Number,
+			waiting_people: Number,
+			submit_time: {type: Date, default: Date.now},
+			user: String
 		}],
 		pictures: [{
 			url: String,
 			submit_time: Date,
-			user: Schema.Types.ObjectId
+			user: String
 		}]
 	});
 
