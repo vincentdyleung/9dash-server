@@ -25,7 +25,7 @@ function seedRes(name,col,num)
           waiting_position : 1+Math.floor(Math.random()*10),
           waiting_people: 1+Math.floor(Math.random()*5),
           user: 1+Math.floor(Math.random()*100),
-          submit_time: new Date(reportTime.getTime() + randTime * 60000),
+          submit_time: new Date(reportTime.getTime() - randTime * 60000),
           user: userID,
         };
     }

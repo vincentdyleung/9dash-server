@@ -97,7 +97,7 @@ module.exports.list.search = function(req, res) {
   {
     var currTime = new Date();
     Restaurant.findById(reqID)
-      .where("reports.submit_time").gt( currTime.getTime() - 60000* 60000)  
+      .where("reports.submit_time").gt( currTime.getTime() - 60*60000)  
       .exec( function(err, docs) {
         if (err) {
           res.json(500, { error: err });
@@ -119,7 +119,7 @@ module.exports.list.search = function(req, res) {
   {
     var ret = new Array();
     var currTime = new Date();
-    Restaurant.find({ name : new RegExp(reqName, 'i') , "reports.submit_time" : {$gte : currTime.getTime() - 6000 * 60000}})
+    Restaurant.find({ name : new RegExp(reqName, 'i') , "reports.submit_time" : {$gte : currTime.getTime() - 60 * 60000}})
       //.where("reports.submit_time").gt( currTime.getTime() - 6000* 60000)  
       .exec( function(err, docs) {
         if (err) {
