@@ -71,27 +71,37 @@ module.exports = function(model, modelU) {
 	Restaurant = model;
   User = modelU;
 }
-//module.exports = function(model) {
-	//User= model
-//}
 
-module.exports.list = function(req, res) {	
-	Restaurant.find()
-		.exec( function(err, docs) {
-			if (err) {
-				res.json(500, { error: err });
-			} else {
-				res.json(200, {count: docs.length, data: docs });
-			}
-		});
+module.exports.list = function(req, res) 
+{	
+  var ret = new Array();
+  var currTime = new Date();
+  Restaurant.find({"reports.submit_time" : { $gte : currTime.getTime() - 60*12*60000 }})
+    .exec(function(err,docs){
+      if(err) res.json(500, {error:err});
+      else{
+        docs.forEach(function(doc)
+          {
+            var newObj = 
+              {
+                name:doc.name,
+                id:doc.id,
+                time:interpret(doc.reports),
+                photo: doc.pictures.sort(function(a,b) {return dates.compare(a,b);})[0]
+              };
+            ret.push(newObj);
+          });
+        res.json(200,ret);
+      }
+    });
 };
 
 module.exports.list.search = function(req, res) {	
 	//Restaurant.find({name : new RegExp(req.params.name, 'i')})
   var reqID = req.params.id;
   var reqName = req.params.name;
-  console.log(reqID);
-  console.log(reqName);
+  //console.log(reqID);
+  //console.log(reqName);
   if(reqID != undefined)
   {
     var currTime = new Date();
@@ -105,7 +115,7 @@ module.exports.list.search = function(req, res) {
           var ret = 
             { 
               name: docs.name, 
-              id:docs.name , 
+              id: docs.id, 
               time: interpret(docs.reports), 
               photo: docs.pictures.sort(function(a,b){return dates.compare(a,b);})[0]
             }; 
