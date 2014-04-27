@@ -55,6 +55,6 @@ function seedUser(name,col,num)
   }
 }
 
-seedRes("9dash", "restaurants", 100);
-seedUser("9dash", "users", 100);
+seedRes("app24572466", "restaurants", 100);
+seedUser("app24572466", "users", 100);
 
