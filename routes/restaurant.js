@@ -77,6 +77,7 @@ module.exports.list = function(req, res)
   var ret = new Array();
   var currTime = new Date();
   Restaurant.find({"reports.submit_time" : { $gte : currTime.getTime() - 60*12*60000 }})
+    .limit(25)
     .exec(function(err,docs){
       if(err) res.json(500, {error:err});
       else{

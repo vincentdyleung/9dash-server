@@ -14,16 +14,19 @@ function seedRes(name,col,num)
     var c = name[Math.floor(Math.random() * name.length)];
     var reportNum = 20+Math.floor(Math.random() * 80);
     var report = new Array();
+    var randMultiplier = 5 + Math.floor(Math.random()*40);
+
     for(var j = 0; j < reportNum; j++)
     {
       var userID = 1+Math.floor(Math.random()*100);
       var reportTime = new Date();
       var randTime = Math.floor(Math.random()*30);
+
       report[j] = 
         {
-          waiting_time : 1+Math.floor(Math.random()*20),
-          waiting_position : 1+Math.floor(Math.random()*10),
-          waiting_people: 1+Math.floor(Math.random()*5),
+          waiting_time : 1+Math.floor(Math.random()*randMultiplier),
+          waiting_position : 1+Math.floor(Math.random()*randMultiplier/2),
+          waiting_people: 1+Math.floor(Math.random()*6),
           user: 1+Math.floor(Math.random()*100),
           submit_time: new Date(reportTime.getTime() + randTime * 60000),
           user: userID,
