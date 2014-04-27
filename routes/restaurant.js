@@ -209,7 +209,7 @@ module.exports.submitReport = function(req, res) {
 					if (err) {
 						res.json(500, { error: err} );
 					} else {
-            User.findById(req.body.user).exec(function(err,doc){ doc.point += 1100; doc.save(function(err){ res.json(500,err)});});
+            			User.findOne({fbid:req.body.user}).exec(function(err,doc){ doc.point += 1100; doc.save(function(err){ res.json(500,err)});});
 						res.json(200, {OK:"OK"});
 					}
 				})
